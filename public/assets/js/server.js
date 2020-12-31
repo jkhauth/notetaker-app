@@ -51,28 +51,38 @@ app.get(`/api/notes/:db`, function(req, res){
 //=======================================
 //===POST REQUESTS
 app.post("/api/notes", function(req, res){
+var id = db.length + 1
 var note ={
-    id: db.length + 1,
+    id: id.toString(),
     title: req.body.title,
     text: req.body.text
 }
-console.log(db.length)
-console.log(note)
 db.push(note)
 res.end()
 })
 
-
-
 //=======================================
-//===DELETE REQUESTS
-app.delete("/api/notes:id", (req , res) => {
-    const { id } = req.params;
-    if (id) {
-        console.log(id + " will be deleted")
+// ===DELETE REQUESTS
+app.delete("/api/notes/:db" , (req , res) => {
+    var chosen = req.params.db
+        if(chosen){
+        for (var i=0; i<db.length; i++) {
+            if (chosen === db[i].id){
+                if (db.length === 1){
+                    db.splice(0, 1)
+                    res.end()
+                    return;
+                }else {
+                console.log(db[i].id)
+                db.splice(i, i)
+                res.end()
+                return;
+                }
+            }
+        }
     }
-    res.end()
 })
+
 // ======================================
 app.listen(PORT, function(){
     console.log("app is listening on port " + PORT)
