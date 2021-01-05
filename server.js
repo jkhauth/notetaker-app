@@ -4,26 +4,26 @@ const { json } = require("express");
 var express = require("express");
 var fs = require('fs')
 var path = require('path')
-var db = require("../../../db/db.json")
+var db = require("./db/db.json")
 var app = express();
 var PORT = 3000;
 
 //======================================
 //===STATIC SETUP=======================
 app.use(express.urlencoded({ extended: false }));
-app.use(express.static(path.join(__dirname, "../../../public")));
+app.use(express.static(path.join(__dirname, "public")));
 
 
 //=======================================
 //===GET REQUESTS========================
 //boots up index.html on startup
 app.get('/', function(req, res){
-    res.sendFile(path.join(__dirname, '../../index.html'))
+    res.sendFile(path.join(__dirname, '/public/index.html'))
 })
 
 //boots up notes page
 app.get('/notes', function(req, res){
-    res.sendFile(path.join(__dirname, '../../notes.html'))
+    res.sendFile(path.join(__dirname, '/public/notes.html'))
 })
 
 // shows all notes
@@ -73,7 +73,6 @@ app.delete("/api/notes/:db" , (req , res) => {
                     res.end()
                     return;
                 }else {
-                console.log(db[i].id)
                 db.splice(i, i)
                 res.end()
                 return;
