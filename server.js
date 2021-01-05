@@ -6,7 +6,7 @@ var fs = require('fs')
 var path = require('path')
 var db = require("./db/db.json")
 var app = express();
-var PORT = 3000;
+var PORT = process.env.PORT || 3000;
 
 //======================================
 //===STATIC SETUP=======================
