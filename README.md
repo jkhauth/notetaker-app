@@ -24,6 +24,6 @@ Once the user creates a new note, it automatically gets saved into the notes lis
 
 
 ## Deployed URLs
-[GitHub-Repository](https://github.com/dmitriso/THme)
+[GitHub-Repository](https://github.com/jkhauth/notetaker-app)
 
-[THme-App](https://dmitriso.github.io/THme/)
+[Notetaker-App](https://note-taker-jkhauth.herokuapp.com/)
